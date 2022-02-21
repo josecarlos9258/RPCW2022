@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+    <meta>
+        <key>RPCW:TP1</key>
+        <title>
+        TPC1
+        </title>
+        <subtitle>
+        Criação de uma página web estática sobre o nome José.
+        </subtitle>
+        <bdate>
+        18/02/2022
+        </bdate>
+        <edate>
+        20/02/2022
+        </edate>
+        <supervisor>José Carlos Ramalho</supervisor>
+        <uc>Representação e Processamento de Conhecimento na Web (RPCW)</uc>
+    </meta>
+    <workteam>
+        <worker number="PG47355">
+            <name>José Carlos Leite Magalhães</name>
+            <email>pg47355@alunos.uminho.pt</email>
+        </worker>
+    </workteam>
+    <abstract>
+        Neste TPC1 foi pedido para, dado um tema à escolha, criar uma página HTML sobre este. Neste caso concreto foi escolhido como tema o nome José, onde foram apresentadas algumas informações envolvendo este tema.
+    </abstract>
+    <results>
+
+    </results>
+</xml>
