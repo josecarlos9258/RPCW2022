@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doc>
+    <meta>
+        <titulo>TPC 3: Criação de servidor, gestor de páginas web com o consumo de uma API de dados.</titulo>
+        <data>2022-02-28</data>
+        <autor>
+            <id>PG47355</id>
+            <nome>José Carlos Leite Magalhães</nome>
+        </autor>
+        <uc>
+            <sigla>RPCW2022</sigla>
+            <nome>Representação e Processamento de Conhecimento na Web</nome>
+        </uc>
+    </meta>
+    <resumo>
+        <p>Servidor que apresenta informações relativas a uma determinada escola de música segundo um Dataset fornecido.</p>
+        <p>O REST API é hospedado na máquina em questão mas responde a uma porta diferente.</p>
+        <p>O servidor é capaz de apresentar 3 páginas web: Alunos, Cursos e Instrumentos, cuja informação se encontra em tabelas.</p>
+    </resumo>
+    <resultados>
+        <resultado><url>db.json</url><texto>Dataset</texto></resultado>
+        <resultado><url>package-lock.json</url><texto>Ficheiro com todas as dependências do servidor.</texto></resultado>
+        <resultado><url>server.js</url><texto>Servidor que consome a REST API para extrair informações.</texto></resultado>
+    </resultados>
+</doc>
