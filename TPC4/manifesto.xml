@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doc>
+    <meta>
+        <titulo>TPC 4: Criação de servidor para uma To-Do List.</titulo>
+        <data>2022-03-22</data>
+        <autor>
+            <id>PG47355</id>
+            <nome>José Carlos Leite Magalhães</nome>
+        </autor>
+        <uc>
+            <sigla>RPCW2022</sigla>
+            <nome>Representação e Processamento de Conhecimento na Web</nome>
+        </uc>
+    </meta>
+    <resumo>
+        <p>O projeto desenvolvido consistiu no desenvolvimento de um servidor Web, em <i>Node.js</i>, que disponibiliza os serviços habituais de uma lista de tarefas e funciona todo sobre uma única página HTML.</p>
+        <p>As tarefas introduzidas e manipuladas pelo utilizador são guardadas num ficheiro <i>JSON</i> e disponibilizadas pelo servidor <i>json-server</i> , que cria uma API que permite aceder à informação do dataset.</p>
+        <p>Neste projeto é possível criar novas tarefas, especificando a sua descrição, o responsável por a resolver, o prazo e o tipo da tarefa em questão.</p>
+        <p>As tarefas podem ser editadas e concluídas a qualquer momento.</p>
+    </resumo>
+    <resultados>
+        <resultado><url>/node_modules</url><texto>Pasta com os módulos usados na execução do servidor</texto></resultado>
+        <resultado><url>db.json</url><texto>Dataset</texto></resultado>
+        <resultado><url>package.json</url><texto>Ficheiro JSON com dependências do servidor</texto></resultado>
+        <resultado><url>static.js</url><texto>Funções auxiliares do servidor, responsáveis por servir recursos estáticos</texto></resultado>
+        <resultado><url>server.js</url><texto>Código fonte do servidor Node</texto></resultado>
+    </resultados>
+</doc>
