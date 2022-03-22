@@ -45,12 +45,12 @@
     },
     {
       "description": "Resolver a morte no Nilo",
-      "who": "Hercule Poirot",
-      "due": "2026-08-25T04:04",
-      "type": "Compromisso",
-      "id": "6",
       "created": "2022-03-22T00:10",
-      "done": false
+      "due": "2026-08-25T04:04",
+      "who": "Hercule Poirot",
+      "type": "Compromisso",
+      "done": true,
+      "id": "6"
     },
     {
       "description": "Cortar Cebolas",

@@ -132,7 +132,7 @@ function editTaskForm(task) {
                 <option selected="true" value="${task.type}" hidden>${task.type}</option>
                 <option value="Trabalho">Trabalho</option>
                 <option value="Estudos">Estudos</option>
-                <option value="Compromisso">Limpeza</option>
+                <option value="Compromisso">Compromisso</option>
             </select>
 
             <div id="buttons" style="margin-top: 20px">
