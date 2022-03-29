@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    h1 TPC5 | José Carlos Magalhães | RPCW 21/22 
+    h1 Lista de Músicas com província:
+    table
+        tr
+            th Identificador
+            th Título
+        each m in musicas
+            tr 
+                td
+                    a(href="/musicas/"+m.id)= m.id
+                td= m.tit
+
+            tr
+    hr 
+    adress 
+        a(href="/musicas") Voltar à lista        
