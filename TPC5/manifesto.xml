@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doc>
+    <meta>
+        <titulo>TPC 5: Aplicação Express de gestão de músicas.</titulo>
+        <data>2022-03-29</data>
+        <autor>
+            <id>PG47355</id>
+            <nome>José Carlos Leite Magalhães</nome>
+        </autor>
+        <uc>
+            <sigla>RPCW2022</sigla>
+            <nome>Representação e Processamento de Conhecimento na Web</nome>
+        </uc>
+    </meta>
+    <resumo>
+        <p>O projeto desenvolvido consistiu no desenvolvimento de uma aplicação Express com servidor Node.js, que gere dados relativos a músicas.</p>
+        <p>As páginas web são geradas em tempo real</p>
+        <p>O servidor tem a capacidade de apresentar a lista de todas as músicas, uma música individual e músicas pertencentes a uma província.</p>
+
+    </resumo>
+    <resultados>
+        <resultado><url>/node_modules</url><texto>Pasta com os módulos usados na execução do servidor</texto></resultado>
+        <resultado><url>arq-son-parsed.json</url><texto>Dataset</texto></resultado>
+        <resultado><url>package.json</url><texto>Ficheiro JSON com dependências do servidor</texto></resultado>
+        <resultado><url>app.js</url><texto>Código fonte do servidor Node</texto></resultado>
+        <resultado><url>parser.py</url><texto>Script que atribui a cada elemento do Dataset um Identificador</texto></resultado>
+        <resultado><url>/routes</url><texto>Pasta contendo as rotas necessárias para a execução do servidor</texto></resultado>
+        <resultado><url>/public</url><texto>Pasta com os recursos estáticos necessários para a execução do servidor</texto></resultado>
+        <resultado><url>/views</url><texto>Pasta com as views necessárias para a execução do servidor</texto></resultado>
+    </resultados>
+</doc>
