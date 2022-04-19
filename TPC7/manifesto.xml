@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doc>
+    <meta>
+        <titulo>TPC 7: CLAV - Classificação e Avaliação da Informação Pública.</titulo>
+        <data>2022-04-19</data>
+        <autor>
+            <id>PG47355</id>
+            <nome>José Carlos Leite Magalhães</nome>
+        </autor>
+        <uc>
+            <sigla>RPCW2022</sigla>
+            <nome>Representação e Processamento de Conhecimento na Web</nome>
+        </uc>
+    </meta>
+    <resumo>
+        <p>Criação de uma aplicação web com o objetivo de extrair informação do CLAV e apresentar esta ao utilizador.</p>
+        <p>É possível visualizar todas as relações entre as classes.</p> 
+    </resumo>
+    <resultados>
+        <resultado><url>/node_modules</url><texto>Pasta com os módulos usados na execução do servidor</texto></resultado>
+        <resultado><url>package.json</url><texto>Ficheiro JSON com dependências do servidor</texto></resultado>
+        <resultado><url>app.js</url><texto>Código fonte do servidor Node</texto></resultado>
+        <resultado><url>/routes</url><texto>Pasta contendo as rotas necessárias para a execução do servidor</texto></resultado>
+        <resultado><url>/public</url><texto>Pasta com os recursos estáticos necessários para a execução do servidor</texto></resultado>
+        <resultado><url>/views</url><texto>Pasta com as views necessárias para a execução do servidor</texto></resultado>
+    </resultados>
+</doc>
