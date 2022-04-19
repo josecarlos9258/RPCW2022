@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  p TPC7 | José Carlos Magalhães | RPCW 21/22
+  h1 CLAV | Classificação e Avaliação da Informação Pública
+  table.w3-table-all
+    tr
+      th Código
+      th Título
+    each c in classes1
+      tr
+        td
+          a(href='/classe/'+ c.codigo) #{c.codigo}
+        td= c.titulo

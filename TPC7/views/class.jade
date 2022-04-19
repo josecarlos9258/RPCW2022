@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1 Classe
+  table.w3-table-all
+    tr
+      th Código
+      th Título
+      th Status
+    tr
+      td= c.codigo
+      td= c.titulo
+      td= c.status
+
+        h1 Filhos
+
+        ul
+        each filho in c.filhos
+            li #{filho.titulo} - 
+                a(href="/classe/"+filho.codigo)= filho.codigo
+
+  a(href=('/'))
+    p Voltar ao menu principal
