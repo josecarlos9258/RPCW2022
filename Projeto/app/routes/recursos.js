@@ -296,7 +296,6 @@ router.post('/classificar/:id', (req, res) => {
 })
 
 
-//a funcionar crl
 router.get("/download/:id", (req, res) => {
     if (!req.cookies.token) aux.consumerTokenGenerator(req.originalUrl, res);
     else {
