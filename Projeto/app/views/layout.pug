@@ -1,0 +1,127 @@
+doctype html
+html
+	head
+		title= title
+		link(rel='stylesheet', href='/stylesheets/w3.css')
+		link(rel='stylesheet', href='/stylesheets/style.css')
+		link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+		script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js")
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js')
+		
+		script(src='/javascripts/bagit.js')
+		script(src="/javascripts/jszip.js")
+		script(src='/javascripts/formScripts.js')
+		script(src='/javascripts/funcs.js')
+		script(src='/javascripts/script.js')
+
+	body
+		div.w3-bar.w3-teal.w3-large(id="navbar")
+			a.w3-bar-item.w3-button.w3-wide.w3-blue-grey(href='/') Home
+			a.w3-bar-item.w3-button(href='/users') Utilizadores
+			a.w3-bar-item.w3-button(href='/noticias') Notícias
+			
+			if (nivel == "consumidor")
+				a.w3-bar-item.w3-button.w3-right(onclick="document.getElementById('modalSignup').style.display='block'") Registar
+				a.w3-bar-item.w3-button.w3-right(onclick="document.getElementById('modalLogin').style.display='block'") Login
+			else
+				a.w3-bar-item.w3-button(href='/recursos') Recursos
+				a.w3-bar-item.w3-button(href='/perfil') Perfil
+				a.w3-bar-item.w3-button.w3-right(href="/users/logout") Logout
+				if nome
+					a.w3-bar-item.w3-right= `Bem vindo ${nome}!`
+
+		.w3-modal(id='modalLogin' style=invalidLField ? "display: block" : "display: none")
+			form.w3-modal-content.w3-animate-top.w3-round-large(action="/users/login" method="POST")
+				.w3-container.w3-teal
+					span(class='w3-button w3-display-topright' onclick="document.getElementById('modalLogin').style.display='none'") &times;
+					h2 Menu Login
+				.w3-container
+					.w3-row.w3-section
+						div(class="w3-col", style="width: 50px")
+							i(class="w3-xxlarge fa fa-envelope-o" style="color: teal")
+						div.w3-rest
+							input.w3-input.w3-border(type="email" name="email" style=(invalidLField == "email") ? "background-color: #ffb3b3" : "" placeholder="Email" required)
+
+					.w3-row.w3-section
+						div.w3-center(class="w3-col", style="width: 50px")
+							i(class="w3-xxlarge fa fa-lock" style="color: teal")
+						div.w3-rest
+							input.w3-input.w3-border(type="password" name="password" style=(invalidLField == "password") ? "background-color: #ffb3b3" : "" placeholder="Password" required)
+
+
+						if (invalidLField)
+							.w3-center
+								p.w3-text-red(style="text-align: center")= error_msg
+					
+					button(type="submit" class="w3-btn w3-teal w3-block w3-section") Login
+
+					button(class="w3-btn w3-red" onclick="document.getElementById('modalLogin').style.display='none'") Cancelar
+					p
+
+		.w3-modal(id='modalSignup' style=invalidSField ? "display: block" : "display: none")
+			form.w3-modal-content.w3-animate-top.w3-round-large(action="/users/registo" method="POST")
+				.w3-container.w3-teal
+					span(class='w3-button w3-display-topright' onclick="document.getElementById('modalSignup').style.display='none'") &times;
+					h2 Menu Registar
+					p Preenche o formulário para te registares!
+				
+				.w3-container
+					.w3-row.w3-section
+						div(class="w3-col", style="width: 50px")
+							i(class="w3-xxlarge fa fa-user-o" style="color: teal")
+						div.w3-rest
+							input.w3-input.w3-border(type="text" name="username" placeholder="Nome" required)
+					
+					.w3-row.w3-section
+						div(class="w3-col", style="width: 50px")
+							i(class="w3-xxlarge fa fa-envelope-o" style="color: teal")
+						div.w3-rest
+							input.w3-input.w3-border(type="email" name="email" style=(invalidSField == "email") ? "background-color: #ffb3b3" : "" placeholder="Email" required)
+
+					.w3-row.w3-section
+						div(class="w3-col", style="width: 50px")
+							i(class="w3-xxlarge fa fa-check" style="color: teal")
+						div.w3-rest
+							select.w3-select(id="tipo_estatuto" name="estatuto" required)
+								option(value="" disabled selected) Escolha a sua opção.
+								option(value="Estudante" selected=(estatuto == "Estudante") ? true : false) Estudante
+								option(value="Docente" selected=(estatuto == "Docente") ? true : false) Docente
+								option(value="Trabalhador" selected=(estatuto == "Trabalhador") ? true : false) Trabalhador
+					
+
+					.w3-row.w3-section
+						div(class="w3-col", style="width: 50px")
+							i(class="w3-xxlarge fa fa-building-o" style="color: teal")
+						div.w3-rest
+							input.w3-input.w3-border(type="text" name="filiacao" placeholder="Filiação" required)
+
+					.w3-row.w3-section
+						div.w3-center(class="w3-col", style="width: 50px")
+							i(class="w3-xxlarge fa fa-lock" style="color: teal")
+						div.w3-rest
+							input.w3-input.w3-border(type="password" name="password" placeholder="Password" required)
+
+					if (invalidSField)
+							.w3-center
+								p.w3-text-red(style="text-align: center")= error_msg
+
+					button(type="submit" class="w3-btn w3-teal w3-block w3-section") Registar
+					p
+					button(class="w3-btn w3-red" onclick="document.getElementById('modalSignup').style.display='none'") Cancelar
+					p
+
+		block content
+	
+		
+		w3-container.w3-teal.w3-border(opacity='0%')
+			a
+			p
+		
+		w3-container.w3-teal.w3-border(opacity='0%')
+			h2
+							
+	
+		footer.w3-container.w3-teal.w3-border
+			center
+				a(href="/") Voltar ao início
+				p Repositório de Recursos Didáticos | RPCW 2022

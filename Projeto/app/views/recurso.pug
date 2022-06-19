@@ -1,0 +1,142 @@
+extends layout
+
+block content
+
+
+
+    center
+        h1= `Informação sobre: ${recurso.titulo} `
+        .recurso
+            .DownloadRec
+                
+                a(href="/recursos/download/"+recurso.id).button.w3-button.w3-large.w3-teal.w3-border.w3-border-white.w3-round-large Download
+                button.w3-button.w3-large.w3-teal.w3-border.w3-border-white.w3-round-large(onclick=`document.getElementById('${"rating_"+recurso.id}').style.display='block'`) Classificar
+                p
+            .CommentsRec
+                .w3-round-large.w3-teal(style='width:90%;')
+                    h1 Comentários
+                    ul.w3-ul
+                        each c in comentarios.reverse()
+                            li  
+                                p(style='display: inline')= `(${c.commentDate.replace("T"," ")}) `
+                                a(style='display: inline' href="/perfil/"+c.idUser)= c.username
+                                p(style='display: inline')= ": " + c.comment 
+                button.w3-button.w3-large.w3-teal.w3-border.w3-border-white.w3-round-large(onclick=`document.getElementById('${"comment_"+recurso.id}').style.display='block'`) Comentar
+            .InfoRec
+                .w3-round-large.w3-teal(style='width:90%;')
+                    ul.w3-ul
+                        li
+                            p(style='display: inline') Titulo: 
+                            a(style='display: inline' href="/recursos/")= recurso["titulo"]
+                        li= `Descrição: ${recurso["descricao"]}`
+                        li= `Tipo: ${recurso["tipo"]}`
+                        li
+                            p(style='display: inline') Publicador: 
+                            a(style='display: inline' href="/perfil/"+recurso["idAutor"])= recurso["nomeAutor"]
+                        li= `Data de Criação: `+ recurso["dataCriacao"]
+                        li= `Data de Registo: `+ recurso.dataRegisto.replace("T"," ")
+                        li= `Data de última Modificação: `+ recurso.dataUltimaMod.replace("T"," ")
+                        li 
+                            h3 Ficheiros
+                            each f in recurso.ficheiros
+                                .w3-round-large.w3-blue-gray(style='width:90%;')
+                                    ul.w3-ul
+                                        li= "Titulo: " + f["title"]
+                                        li= "Autor: " + f["author"]
+                                        li= "Data de submissão: " + f["submissionDate"]
+                                        li= "Tipo MIME: " + f["mimetype"]
+                                        li= "Tamanho: " + f["size"]
+                                        li 
+                                            a(href="/recursos/preview/"+recurso.id + "/" + f["_id"]).button.w3-button.w3-large.w3-teal.w3-border.w3-border-white.w3-round-large(onclick=`document.getElementById('${"preview_"+recurso.id}').style.display='block'`) Pré-visualizar
+                                p
+                        li
+                            if recurso["classificação"]
+                                -var classifs = recurso["classificacao"].map(function(c){return c.rating;})
+                                -var classif = classifs.reduce((a,b)=> a+b,0)/classifs.length
+                                -var average = classif
+                            else 
+                                - classif = 0
+                                - average = 0
+                            -var i = 5
+                            
+                            while i>0
+                                - i = i-1
+                                if classif >= 1
+                                    span.fa.fa-star.checked
+                                    - classif = classif - 1
+                                else if classif == 0
+                                    span.fa.fa-star-o.checked
+                                else
+                                    span.fa.fa-star-half-o.checked
+                                    - classif = 0
+
+                            p(style='display: inline')= `(${average}) `
+
+                                
+    .w3-modal(id='comment_'+recurso.id)
+                        form.w3-modal-content.w3-animate-top.w3-round-large(action="/publicacoes/comentar/"+pubId method="POST")
+                            .w3-container.w3-teal
+                                span(class='w3-button w3-display-topright' onclick=`document.getElementById('${"comment_"+recurso.id}').style.display='none'`) &times;
+                                h2= "Adicionar comentário a \"" + recurso.titulo + "\""   
+                            .w3-container
+                                .w3-row.w3-section
+                                    div.w3-rest
+                                        input.w3-input.w3-border(type="text" name="comment" id="comment" placeholder="Comentário" required)
+                                
+                                button(type="submit" class="w3-btn w3-teal w3-block w3-section") Comentar
+
+                                button(class="w3-btn w3-red" onclick=`document.getElementById('${"comment_"+recurso.id}').style.display='none'`) Cancelar
+                                p
+
+    .w3-modal(id='rating_'+recurso.id)
+        form.w3-modal-content.w3-animate-top.w3-round-large(action="/recursos/classificar/"+recurso.id method="POST")
+            .w3-container.w3-teal
+                span(class='w3-button w3-display-topright' onclick=`document.getElementById('${'rating_'+recurso.id}').style.display='none'`) &times;
+                h2= "Adicionar classificação a \"" + recurso.titulo + "\""  
+            .w3-container
+                .w3-row.w3-section
+                    div.w3-rest
+                        input.w3-radio(type='radio' name='rating' value=1 checked='')
+                        label
+                            span.fa.fa-star.checked
+                            span.fa.fa-star
+                            span.fa.fa-star
+                            span.fa.fa-star
+                            span.fa.fa-star
+                        p
+                        input.w3-radio(type='radio' name='rating' value=2)
+                        label
+                            span.fa.fa-star.checked
+                            span.fa.fa-star.checked
+                            span.fa.fa-star
+                            span.fa.fa-star
+                            span.fa.fa-star
+                        p
+                        input.w3-radio(type='radio' name='rating' value=3)
+                        label
+                            span.fa.fa-star.checked
+                            span.fa.fa-star.checked
+                            span.fa.fa-star.checked
+                            span.fa.fa-star
+                            span.fa.fa-star
+                        p
+                        input.w3-radio(type='radio' name='rating' value=4)
+                        label
+                            span.fa.fa-star.checked
+                            span.fa.fa-star.checked
+                            span.fa.fa-star.checked
+                            span.fa.fa-star.checked
+                            span.fa.fa-star
+                        p
+                        input.w3-radio(type='radio' name='rating' value=5)
+                        label
+                            span.fa.fa-star.checked
+                            span.fa.fa-star.checked
+                            span.fa.fa-star.checked
+                            span.fa.fa-star.checked
+                            span.fa.fa-star.checked
+
+                
+                button(type="submit" class="w3-btn w3-teal w3-block w3-section") Classificar
+
+                button(class="w3-btn w3-red" onclick=`document.getElementById('${'rating_'+recurso.id}').style.display='none'`) Cancelar
